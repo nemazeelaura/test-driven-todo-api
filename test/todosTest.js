@@ -12,10 +12,10 @@ var fetcher = (function(request, q) {
   // if the request takes too long or is in the wrong format.
 
   return {
-    get:  function(action      ){ return fetch("get",   {url: action})             },
-    del:  function(action      ){ return fetch("del",   {url: action})             },
-    post: function(action, data){ return fetch("post",  {url: action, form: data}) },
-    put:  function(action, data){ return fetch("put",   {url: action, form: data}) }
+    get:  function(action      ){ return fetch("get",   {url: action});             },
+    del:  function(action      ){ return fetch("del",   {url: action});             },
+    post: function(action, data){ return fetch("post",  {url: action, form: data}); },
+    put:  function(action, data){ return fetch("put",   {url: action, form: data}); }
   };
 
   ////
@@ -27,7 +27,7 @@ var fetcher = (function(request, q) {
       // Intended to be more intelligible to students than mocha's stock error of
       //    "Error: timeout of 2000ms exceeded. /
       //     Ensure the done() callback is being called in this test."
-      deferred.reject(new Error("No Response From Server"))
+      deferred.reject(new Error("No Response From Server"));
     }, TIMEOUT);
 
     request[method](options, function(error, response){
@@ -39,7 +39,7 @@ var fetcher = (function(request, q) {
         response.json = JSON.parse(response.body);
         deferred.resolve(response);
       } catch (e) {
-        deferred.reject(new Error("Response body is the " + typeof(response.body) + " \"" + response.body.toString() + "\" and not valid JSON"))
+        deferred.reject(new Error("Response body is the " + typeof(response.body) + " \"" + response.body.toString() + "\" and not valid JSON"));
       }
     });
 
@@ -47,7 +47,7 @@ var fetcher = (function(request, q) {
     return deferred.promise;
   }
 
-}(request, Q))
+}(request, Q));
 
 
 
